@@ -3,8 +3,8 @@ package ui;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-public abstract class PanelField extends JPanel {
-    private GameModel model;
+public abstract class PanelField extends JPanel implements Subscriber {
+    protected GameModel model;
     
     public PanelField(GameModel model) {
         this.model = model;
@@ -18,7 +18,18 @@ public abstract class PanelField extends JPanel {
             graphics.drawLine(0, i*15, 150, i*15);
         }
         
+        for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < 10; i++) {
+                paintElement(graphics, i, j);
+            }
+        }
         
     }
-       
+    
+    protected abstract void paintElement(Graphics graphics, int i, int j);
+
+    @Override
+    public void update() {
+        this.repaint();
+    }
 }

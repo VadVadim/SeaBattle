@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -21,6 +22,9 @@ public class GameController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        if ("New Game".equals(command)) {
+            model.startNewGame();
+        }
         if ("About".equals(command)) {
             JFrame rules = new JFrame();
             rules.setVisible(true);
@@ -34,6 +38,12 @@ public class GameController implements ActionListener {
         if ("Exit".equals(command)) {
             System.exit(0);
         }
+    }
+    
+    public void mousePressed(MouseEvent arg0) {
+        int x = arg0.getX() / 15;
+        int y = arg0.getY() / 15;
+        model.doShotByOpponent(x, y);
     }
 
 }

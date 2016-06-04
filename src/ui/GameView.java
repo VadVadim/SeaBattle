@@ -1,6 +1,8 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -22,13 +24,30 @@ public class GameView extends JFrame {
     GameView(GameModel model) {
         this.model = model;
         buildUI();
+        this.model.register(myPlayerPanel);
+        this.model.register(enemyPlayerPanel);
+        this.model.register(scorePanel);
         this.controller = new GameController(this, model);
         attachController();
+    }
+    
+    public void update() {
+        myPlayerPanel.repaint();
+        enemyPlayerPanel.repaint();
+        scorePanel.repaint();
     }
 
     private void attachController() {
         about.addActionListener(controller);
+        newGame.addActionListener(controller);
         exit.addActionListener(controller);
+
+        enemyPlayerPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent arg) {
+                controller.mousePressed(arg);
+            }
+        });
     }
 
     private void buildUI() {

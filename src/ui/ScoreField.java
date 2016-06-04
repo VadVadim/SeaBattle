@@ -3,8 +3,10 @@ package ui;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import logic.Ship;
+import logic.ShipState;
 
-public class ScoreField extends JPanel {
+public class ScoreField extends JPanel implements Subscriber {
 
     private GameModel model;
     private int ships;
@@ -15,9 +17,19 @@ public class ScoreField extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
         int[] elem = new int[4];
         for (int i = 0; i < 0; i++) {
             elem[i] = 0;
+        }
+
+        ships = 0;
+        for (Ship ship : model.enemyPlayerField.ships) {
+            if (ship.state != ShipState.killed) {
+                elem[ship.size -1] ++;
+                ships++;
+            }
         }
 
         for (int i = 0; i < 4; i++) {
@@ -31,6 +43,11 @@ public class ScoreField extends JPanel {
 
         String string = "Alive: ".concat(String.valueOf(ships));
         g.drawString(string, 25, 100);
+    }
+
+    @Override
+    public void update() {
+        this.repaint();
     }
 
 }
