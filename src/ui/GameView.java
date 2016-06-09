@@ -16,7 +16,7 @@ public class GameView extends JFrame {
     private JMenuItem newGame;
     private JMenuItem exit;
     private JMenuItem about;
-    
+
     private MyPanelField myPlayerPanel;
     private EnemyPanelField enemyPlayerPanel;
     private ScoreField scorePanel;
@@ -30,7 +30,7 @@ public class GameView extends JFrame {
         this.controller = new GameController(this, model);
         attachController();
     }
-    
+
     public void update() {
         myPlayerPanel.repaint();
         enemyPlayerPanel.repaint();
@@ -53,10 +53,10 @@ public class GameView extends JFrame {
     private void buildUI() {
         this.setTitle("SeaBattle");
         this.setResizable(false);
-        this.setBounds(400, 300, 500, 300);
+        this.setBounds(400, 300, 483, 228);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(null);
-        
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(0, 0, 500, 20);
         this.getContentPane().add(menuBar);
@@ -75,7 +75,7 @@ public class GameView extends JFrame {
 
         about = new JMenuItem("About");
         helpMenu.add(about);
-        
+
         myPlayerPanel = new MyPanelField(model);
         myPlayerPanel.setBounds(20, 31, 151, 151);
         this.getContentPane().add(myPlayerPanel);
@@ -83,7 +83,7 @@ public class GameView extends JFrame {
         enemyPlayerPanel = new EnemyPanelField(model);
         enemyPlayerPanel.setBounds(190, 31, 151, 151);
         this.getContentPane().add(enemyPlayerPanel);
-        
+
         scorePanel = new ScoreField(model);
         scorePanel.setBounds(370, 31, 90, 151);
         scorePanel.setBackground(new Color(225,225,255));

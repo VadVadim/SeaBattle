@@ -39,7 +39,7 @@ public class Robot {
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < 10; i++) {
                 Element element = field.elements[i][j];
-                if (element.state == ElementState.injured) {
+                if (element.state == ElementState.INJURED) {
                     // if you found injured the ship item
                     found = true;
                     x = i;

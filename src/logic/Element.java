@@ -7,7 +7,7 @@ public class Element {
     public int x,y;
     
     public Element(int x, int y) {
-        this.state = ElementState.water;
+        this.state = ElementState.WATER;
         this.shuted = false;
         this.x = x;
         this.y = y;

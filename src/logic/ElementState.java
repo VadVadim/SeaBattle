@@ -1,5 +1,5 @@
 package logic;
 
 public enum ElementState {
-    empty, water, border, wall, injured, killed, missed;
+    EMPTY, WATER, BORDER, WALL, INJURED, KILLED, MISSED;
 }

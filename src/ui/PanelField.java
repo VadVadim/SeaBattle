@@ -12,7 +12,7 @@ public abstract class PanelField extends JPanel implements Subscriber {
 
     @Override
     protected void paintComponent(Graphics graphics) {
-
+       
         for (int i = 0; i < 11; i++) {
             graphics.drawLine(i*15, 0, i*15, 150);
             graphics.drawLine(0, i*15, 150, i*15);

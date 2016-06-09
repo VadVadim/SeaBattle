@@ -17,7 +17,7 @@ public class Ship {
         this.size = size;
         this.health = size;
         this.field = field;
-        this.state = ShipState.wall;
+        this.state = ShipState.WALL;
 
         do {
             this.placeRandomly();

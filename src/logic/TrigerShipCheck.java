@@ -9,14 +9,14 @@ public class TrigerShipCheck extends TrigerShip {
     @Override
     public boolean isShip(int m, int n) {
         ElementState state = field.getElement(m, n);
-        return (state == ElementState.water);
+        return (state == ElementState.WATER);
     }
 
     @Override
     public boolean isBorder(int m, int n) {
         ElementState state = field.getElement(m, n);
-        return (state == ElementState.border)
-                || (state == ElementState.water)
-                || (state == ElementState.empty);
+        return (state == ElementState.BORDER)
+                || (state == ElementState.WATER)
+                || (state == ElementState.EMPTY);
     }
 }

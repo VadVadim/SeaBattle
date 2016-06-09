@@ -30,7 +30,7 @@ public class ShipField {
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < 10; i++) {
                 Element element = elements[i][j];
-                element.state = ElementState.water;
+                element.state = ElementState.WATER;
                 element.shuted = false;
             }
         }
@@ -48,8 +48,8 @@ public class ShipField {
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < 10; i++) {
                 Element element = elements[i][j];
-                if (element.state == ElementState.border) {
-                    element.state = ElementState.water;
+                if (element.state == ElementState.BORDER) {
+                    element.state = ElementState.WATER;
                 }
             }
         }
@@ -61,24 +61,24 @@ public class ShipField {
 
         ElementState state = this.getElement(x, y);
         elements[x][y].shuted = true;
-        if (state == ElementState.wall) {
+        if (state == ElementState.WALL) {
             shot = true;
             Ship ship = elements[x][y].ship;
             if (ship.health != 0) {
                 ship.health--;
                 if (ship.health == 0) {
-                    ship.state = ShipState.killed;
+                    ship.state = ShipState.KILLED;
                     for (Element element : ship.elements) {
-                        element.state = ElementState.killed;
+                        element.state = ElementState.KILLED;
                     }
                 } else {
-                    ship.state = ShipState.injured;
-                    elements[x][y].state = ElementState.injured;
+                    ship.state = ShipState.INJURED;
+                    elements[x][y].state = ElementState.INJURED;
                 }
             }
-        } else if ((state == ElementState.border)
-                || (state == ElementState.water)) {
-            this.setElement(x, y, ElementState.missed);
+        } else if ((state == ElementState.BORDER)
+                || (state == ElementState.WATER)) {
+            this.setElement(x, y, ElementState.MISSED);
         }
         return shot;
     }
@@ -91,7 +91,7 @@ public class ShipField {
         if (isBound(x, y)) {
             return elements[x][y].state;
         } else {
-            return ElementState.empty;
+            return ElementState.EMPTY;
         }
     }
 
