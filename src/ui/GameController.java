@@ -1,16 +1,18 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class GameController implements ActionListener {
 
-    public static final String gameRules = "В игру \"морской бой\" играют два человека, "
-            + "которые по очереди называют координаты кораблей на карте противника. "
-            + "Если координаты заняты, то корабль или часть его \"топится\", а попавший имеет право сделать ещё один ход.";
+    public static final String gameRules = "В игру \"морской бой\" играют два человека,\n "
+            + "которые по очереди называют координаты\n кораблей на карте противника.\n "
+            + "\nЕсли координаты заняты, то корабль или\n часть его \"топится\", а попавший имеет право\n сделать ещё один ход.";
     private GameModel model;
     private GameView view;
 
@@ -30,10 +32,14 @@ public class GameController implements ActionListener {
             rules.setVisible(true);
             rules.setTitle("Game Rules");
             rules.setResizable(false);
-            rules.setBounds(1000, 300, 500, 300);
+            rules.setBounds(1000, 300, 800, 600);
 
-            JTextField textField = new JTextField(gameRules);
-            rules.getContentPane().add(textField);
+            JTextArea textArea = new JTextArea(gameRules);
+            textArea.setBackground(Color.CYAN);
+            
+            Font font = new Font("Times New Roman", 0, 40);
+            textArea.setFont(font);
+            rules.getContentPane().add(textArea);
         }
         if ("Exit".equals(command)) {
             System.exit(0);
