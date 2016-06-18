@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 
 public class GameController implements ActionListener {
 
-    public static final String gameRules = "В игру \"морской бой\" играют два человека,\n "
+    private static final String gameRules = "В игру \"морской бой\" играют два человека,\n "
             + "которые по очереди называют координаты\n кораблей на карте противника.\n "
             + "\nЕсли координаты заняты, то корабль или\n часть его \"топится\", а попавший имеет право\n сделать ещё один ход.";
     private GameModel model;
